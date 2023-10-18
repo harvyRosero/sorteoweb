@@ -1,0 +1,161 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página con Contador</title>
+
+    <!-- Enlace a Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+
+    <!-- Estilos CSS personalizados para la página -->
+    <style>
+
+      .content {
+        text-align: center;
+        padding: 100px;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div style="
+    background-image: url({% static 'images/fondo2.jpeg' %});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    "
+    >
+
+    <div style="height:30px;" ></div>
+
+    <h3 style="background-color: rgba(0, 0, 0, 0.5);" class="text-center text-white ">Sorteos24horas.com</h3>
+
+    <div style="height:30px;" ></div>
+
+    <div class="button-container">
+      <button class="transparent-button"> <a id="btn-text" href="https://sorteos24horas.com"> Inicio </a> </button>
+      <button class="transparent-button"> <a id="btn-text" href="https://sorteos24horas.com"> Ver participantes </a> </button>
+      <button class="transparent-button"> <a id="btn-text" href="https://sorteos24horas.com"> Participar </a> </button>
+    </div>
+
+    <div class="marco">
+
+      <div class="content">
+        <p id="title-counter" class="lead" style="color: grey">
+            {{ data.fecha }}
+        </p>
+
+        <h1 id="time" >  </h1>
+        <p id="time-label" style="color: grey;" > horas -- minutos -- segundos </p>
+        
+        <p id="monto-label" >Monto</p>
+        <h3 id="monto" style="color: green;"> $ 35.344 ARG </h3>
+      </div>
+    </div>
+
+    <div style="height: 40px"></div>
+
+    <div class="tabla">
+      <table class="table text-white table-bordered border-white">
+        <thead class="">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Participante</th>
+            <th scope="col">Probabilidad</th>
+            <th scope="col">Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Juan Luar</td>
+            <td>x7</td>
+            <td>17-10-2023</td>
+          </tr>
+          
+          <tr>
+            <td>2</td>
+            <td>Carlos Torres</td>
+            <td>x20</td>
+            <td>17-10-2023</td>
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+
+    <div style="height:50px" ></div>
+
+    </div>
+
+    <footer id="footer" class="footer">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Sorteos24horas.com</h4>
+            <p>Pagina de sorteos de dinero diarios.</p>
+          </div>
+          <div class="col-md-6">
+            <h4>Enlaces útiles</h4>
+            <ul>
+              <li><a href="#">Enlace 1</a></li>
+              <li><a href="#">Enlace 2</a></li>
+              <li><a href="#">Enlace 3</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Enlace a jQuery y Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Script para el contador -->
+    <script>
+
+      horas = {{ data.horas_restantes }}
+      minutos = {{data.minutos_restantes}}
+      segundos = {{data.segundos_restantes}}
+
+      var tiempoTotal = (horas * 3600) + (minutos * 60) + segundos;
+
+      function actualizarCuentaRegresiva() {
+        var horasRestantes = Math.floor(tiempoTotal / 3600);
+        var minutosRestantes = Math.floor((tiempoTotal % 3600) / 60);
+        var segundosRestantes = tiempoTotal % 60;
+      
+        // Actualiza el contenido en tu página o aplicación
+        document.getElementById("time").innerHTML =
+          horasRestantes + " : " + minutosRestantes + " : " + segundosRestantes;
+      
+        // Reduce el tiempo restante
+        tiempoTotal--;
+      
+        // Detén la cuenta regresiva cuando llegue a cero
+        if (tiempoTotal < 0) {
+          clearInterval(intervalo);
+          document.getElementById("time").innerHTML = "¡FInalizado!"; 
+        }
+
+
+      }
+
+      actualizarCuentaRegresiva()
+
+      var intervalo = setInterval(actualizarCuentaRegresiva, 1000);
+
+    </script>
+  </body>
+</html>

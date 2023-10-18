@@ -1,0 +1,103 @@
+.marco{
+    background-color: white;
+    background-image: url( "../images/marco1.png" );
+    background-size: cover;
+    border-radius: 50%;
+    width: 450px;
+    height: 450px;
+    margin: 80px auto;
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: center; /
+  }
+  
+.transparent-button {
+    background-color: #000 ;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.7s;
+  }
+  
+.transparent-button:hover {
+    background-color: rgba(0, 0, 0, 0.5); 
+  }
+
+#btn-text{
+    color: white;
+}
+
+#btn-text:hover{
+    color: gold;
+    text-decoration: none;
+}
+
+#footer {
+    background-color: #000; /* Fondo oscuro */
+    color: white; /* Texto en blanco */
+    padding: 20px 0; /* Espaciado en el interior del footer */
+}
+
+.tabla{
+    margin: 0 10% 0 10%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: aliceblue;
+}
+
+
+
+@media (max-width: 420px) {
+    .marco{
+        width: 370px;
+        height: 370px;
+    }
+
+    #title-counter{
+        font-size: 20px;
+    }
+
+    #time{
+        font-size: 30px;
+    }
+
+    #time-label{
+        font-size: 10px ;
+    }
+
+    #btn-text{
+        font-size: 15px;
+    }
+
+    #monto-label{
+        font-size: 10px;
+    }
+
+    #monto{
+        font-size: 20px;
+    }
+
+    #btn-text{
+        font-size: 10px;
+    }
+
+    .tabla{
+        
+        margin: 0 0 0 0;
+    }
+
+}
+
+@media (max-width: 350px) {
+    .marco{
+        width: 300px;
+        height: 300px;
+    }
+
+    #btn-text{
+        font-size: 10px;
+    }
+}
